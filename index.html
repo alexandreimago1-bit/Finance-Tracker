@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ApexCapital // Portfolio Analytics</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="dashboard-grid">
+        <aside class="sidebar">
+            <div class="brand">ApexCapital</div>
+            <ul class="menu-list">
+                <li class="active" data-view="all">Overview</li>
+                <li data-view="income">Income Ledger</li>
+                <li data-view="expense">Expenses</li>
+            </ul>
+            
+            <div class="budget-alert-box" id="budgetAlert">
+                <div class="alert-header">
+                    <span>Monthly Limit</span>
+                    <span id="budgetPercent">0%</span>
+                </div>
+                <div class="alert-bar-bg">
+                    <div class="alert-bar-fill" id="budgetBarFill"></div>
+                </div>
+                <p id="alertMessage">All systems green.</p>
+            </div>
+        </aside>
+
+        <header class="top-nav">
+            <div class="nav-title">
+                <h2>Financial Ledger Terminal</h2>
+                <p class="subtitle">Real-time domestic transaction logs</p>
+            </div>
+            <div class="user-profile">
+                <div class="user-avatar">ME</div>
+                <span>Terminal User</span>
+            </div>
+        </header>
+
+        <div class="card metric income-card">
+            <h4>Total Net Balance</h4>
+            <div class="value" id="netBalance">$0.00</div>
+            <span class="trend" id="netTrend">Calculated live</span>
+        </div>
+
+        <div class="card metric expense-card">
+            <h4>Total Expenditures</h4>
+            <div class="value text-danger" id="totalExpenses">$0.00</div>
+            <span class="trend">Target limit: $1,500</span>
+        </div>
+
+        <section class="card form-panel">
+            <h3>Log New Transaction</h3>
+            <form id="transactionForm" class="transaction-form">
+                <div class="input-group">
+                    <input type="text" id="txDescription" placeholder="e.g., Steam Game, Groceries" required>
+                </div>
+                <div class="input-row">
+                    <input type="number" id="txAmount" placeholder="Amount ($)" step="0.01" required min="0.01">
+                    <select id="txType">
+                        <option value="expense">Expense</option>
+                        <option value="income">Income</option>
+                    </select>
+                </div>
+                <button type="submit" class="submit-btn">Commit Entry</button>
+            </form>
+        </section>
+
+        <section class="card data-table-panel">
+            <div class="table-header">
+                <h3>Ledger Records</h3>
+                <span class="record-count" id="recordCount">0 entries</span>
+            </div>
+            <div class="table-responsive">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Description</th>
+                            <th>Type</th>
+                            <th>Date</th>
+                            <th class="text-right">Amount</th>
+                            <th class="text-center">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="ledgerBody">
+                        </tbody>
+                </table>
+            </div>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
